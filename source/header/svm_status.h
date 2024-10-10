@@ -1,0 +1,17 @@
+#pragma once
+
+enum class svm_status
+{
+	SVM_IS_CAPABLE_OF_BEING_ENABLED,
+	SVM_IS_NOT_SUPPORTED_BY_CPU,
+	SVM_NESTED_PAGING_NOT_SUPPORTED,
+	SVM_DISABLED_AT_BIOS_NOT_UNLOCKABLE,
+	SVM_DISABLED_WITH_KEY,
+	SVM_WRONG_VENDOR,
+	SVM_NEXT_RIP_NOT_SUPPORTED
+};
+
+inline bool operator!(svm_status status)
+{
+	return status != svm_status::SVM_IS_CAPABLE_OF_BEING_ENABLED;
+}
