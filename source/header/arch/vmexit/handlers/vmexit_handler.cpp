@@ -21,13 +21,13 @@ bool vmexit_handler(vcpu_t& cpu) {
 		break;
 
 	case vmexit_code::NPF:
-		print("[NPF] %zX\n", cpu.guest.control.exit_info_1.info);
-		print("[NPF] %zX\n", cpu.guest.control.exit_info_2.nested_page_fault.faulting_gpa);
+		//print("[NPF] %zX\n", cpu.guest.control.exit_info_1.info);
+		//print("[NPF] %zX\n", cpu.guest.control.exit_info_2.nested_page_fault.faulting_gpa);
 		npf_handler(cpu);
 		break;
 
 	case vmexit_code::HV: // event injection exception
-		print("Failed to inject event\n");
+		//print("Failed to inject event\n");
 		cpu.guest.control.event_injection.value = 0; // reset to avoid infinite loop incase cpu doesnt clear it
 		break;
 

@@ -48,12 +48,12 @@ static register_t rdmsr_handler(vcpu_t& cpu, uint32_t msr) {
 	switch (msr) {
 	case msr::efer::number: 
 	{
-		print("[RDMSR] EFER\n");
+		//print("[RDMSR] EFER\n");
 		return { cpu.shadow.efer.value };
 	}
 	case msr::hsave_pa::number:
 	{
-		print("[RDMSR] HSAVE_PA\n");
+		//print("[RDMSR] HSAVE_PA\n");
 		return { cpu.shadow.hsave_pa.value };
 	}
 	default:
@@ -70,7 +70,7 @@ static void wrmsr_handler(vcpu_t& cpu, uint32_t msr, register_t result) {
 		msr::efer new_efer{ .value = result.value };
 		auto& old_efer = cpu.guest.state.efer;
 		auto& shadow_efer = cpu.shadow.efer;
-		print("[WRMSR] EFER: %zX\n", new_efer.value);
+		//print("[WRMSR] EFER: %zX\n", new_efer.value);
 
 		// TODO: handle reserved bits and system configuration bits and inject an exception respectively ...
 
@@ -85,7 +85,7 @@ static void wrmsr_handler(vcpu_t& cpu, uint32_t msr, register_t result) {
 	{
 		msr::hsave_pa new_hsave {.value = result.value};
 		auto& shadow_hsave = cpu.shadow.hsave_pa;
-		print("[WRMSR] HSAVE_PA: %zX\n", new_hsave.value);
+		//print("[WRMSR] HSAVE_PA: %zX\n", new_hsave.value);
 
 		if (new_hsave.must_be_zero) { // address must be page aligned
 			cpu.inject_exception(exception_vector::GP, 0, true);

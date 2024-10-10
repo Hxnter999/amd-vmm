@@ -117,9 +117,9 @@ void setup_guest(vcpu_t& cpu)
 	//cpu.guest.control.v_intr_masking = 1; // 15.21.1; Virtualize TPR and eflags.if, host eflags.if controls physical interrupts and guest eflags.if controls virtual interrupts
 
 	// Msr bitmap based protection/interception
-	//control.msr_prot = 1;
-	//control.msrpm_base_pa = MmGetPhysicalAddress(&cpu.msrpm).QuadPart;
-	//setup_msrpm(cpu);
+	control.msr_prot = 1;
+	control.msrpm_base_pa = MmGetPhysicalAddress(&cpu.msrpm).QuadPart;
+	setup_msrpm(cpu);
 
 	// nested paging controls alot of things, even implicitly isolating the guest from the host, refer to the manual.
 	//control.np_enable = 1; 
@@ -128,7 +128,6 @@ void setup_guest(vcpu_t& cpu)
 	
 	// ------------------- Setup state area -------------------
 	state.cr0.value = __readcr0();
-	state.cr0.wp = 0;
 	state.cr2.value = __readcr2();
 	state.cr3.value = __readcr3();
 	state.cr4.value = __readcr4();
