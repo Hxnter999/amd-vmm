@@ -20,7 +20,7 @@ This project was unfortunately taken down due to a DMCA claim by an anonymous pe
 1. Clone the repository:
    ```
    git clone https://github.com/Hxnter999/amd-vmm.git
-   cd repo
+   cd amd-vmm
    ```
 
 2. Create and enter build directory:
