@@ -12,11 +12,11 @@ bool vmexit_handler(vcpu_t& cpu) {
 		hypercall_handler(cpu);
 		break;
 
-	case vmexit_code::msr:
+	case vmexit_code::MSR:
 		msr_handler(cpu);
 		break;
 
-	case vmexit_code::cpuid:
+	case vmexit_code::CPUID:
 		cpuid_handler(cpu);
 		break;
 

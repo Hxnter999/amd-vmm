@@ -16,8 +16,6 @@ struct alignas(16) _shadow {
 	// MSR shadowing for the msrs that we intercept
 	msr::efer efer;
 	msr::hsave_pa hsave_pa;
-
-	cr0_t shadow_cr0;
 };
 
 struct alignas(0x1000) vcpu_t {
