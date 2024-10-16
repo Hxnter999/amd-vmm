@@ -8,6 +8,37 @@ This project was unfortunately taken down due to a DMCA claim by an anonymous pe
 
 **Note:** This project is **not expected to work straight out of the box!** It requires setup, customization, and may need debugging or further changes to function properly. This is especially true when running it across **multiple processors and different versions of Windows**, as compatibility may vary.
 
+## Build Guide
+
+### Prerequisites
+
+- CMake 3.21+
+- Windows Driver Kit (WDK)
+
+### Building
+
+1. Clone the repository:
+   ```
+   git clone https://github.com/Hxnter999/amd-vmm.git
+   cd repo
+   ```
+
+2. Create and enter build directory:
+   ```
+   mkdir build && cd build
+   ```
+
+3. Configure and build:
+   ```
+   cmake ..
+   cmake --build .
+   ```
+
+### Building Specific Targets
+
+- VMM: `cmake --build . --target vmm`
+- Usermode: `cmake --build . --target usermode`
+
 ## Contributors
 
 - [TDC0471](https://github.com/TDC0471) - Helped in the early stages of development.
